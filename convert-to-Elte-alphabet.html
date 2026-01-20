@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert To Elte's Alphabet</title>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        #inputText {
+            margin-bottom: 18px;
+            background-color: lightgreen;
+        }
+
+        #outputText {
+            background-color: purple;
+            color: white;
+        }
+
+        .h22 {
+            font-size: 22px;
+        }
+
+        .soming-in-snakes {
+            color: violet;
+        }
+
+        .guide-lines {
+            color: brown;
+        }
+
+        .sample-colour {
+            color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Convert To Elte's Alphabet From ABCDE... Original Alphabet</h1>
+    <h5 class="hidden">
+        Design The Page </br>
+        a textbox to enter wordings </br>
+        a textbox to return result; can be read-only </br>
+        a button to handle click to convert </br>
+        make the page have multi-colours </br>
+    </h5>
+    <h4 class="guide-lines">
+        <em>Type in text w/ dots like, <em class="sample-colour">this is a note ..</em></em><br>
+        <em>The text will be processed to become, <em class="sample-colour">wklv lv d qrwh 11</em> right after the keying in</em><br>
+        <em>In Elte's Alphabet letter D is the first character, </em><em>DEFG HIJK ...</em>
+    </h4>
+
+    <label class="hidden" for="inputText">Input:</label><br>
+    <textarea id="inputText" oninput="convertText()" rows="14" cols="96"></textarea>
+
+    <h2>Converted Text:</h2>
+    <textarea id="outputText" readonly rows="14" cols="95"></textarea>
+
+    <script>
+        function convertText() {
+            // Get the input && output elements
+            const inputText = document.getElementById("inputText").value;
+            const outputText = document.getElementById("outputText");
+
+            // Perform replacements
+            let convertedText = '';
+            for (let i = 0; i < inputText.length; i++) {
+                if (inputText.charCodeAt(i) == 32) {
+                    convertedText += ' ';
+                }
+                else {
+                    convertedText += String.fromCharCode(inputText.charCodeAt(i) + 3);
+                }
+            }
+
+            // Update the output
+            outputText.value = convertedText;
+        }
+    </script>
+</body>
+
+</html>
